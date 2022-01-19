@@ -44,3 +44,17 @@ func BuscaTodosProdutos() []Produto {
 
 	return produtos
 }
+
+func CriarNovoProduto(nome, descricao string, quantidade int, valor float64) {
+
+	conexao := conexao.Conexao()
+
+	prepare, err := conexao.Prepare("insert into produtos (nome, descricao, quantidade, valor) values ($1, $2, $3, $4)")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	prepare.Exec(nome, descricao, quantidade, valor)
+	defer conexao.Close()
+}
