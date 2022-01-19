@@ -24,7 +24,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		nome := r.FormValue("nome")
 		descricao := r.FormValue("descricao")
 		quantidade := r.FormValue("quantidade")
-		valor := r.FormValue("valor")
+		valor := r.FormValue("preco")
 
 		qtdeConvertidoParaInt, err := strconv.Atoi(quantidade)
 		if err != nil {
